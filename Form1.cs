@@ -15,6 +15,7 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.TwiML.Voice;
 using Twilio.Types;
+using DotNetEnv;
 
 namespace VetMed
 {
@@ -22,9 +23,9 @@ namespace VetMed
     {
         // Declare global variables and connection string to the database
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\natha\Downloads\VetMedCurrent 5\VetMedCurrent\VetMed\VetMED_db.mdf"";Integrated Security=True;Connect Timeout=30;Integrated Security=True";
-        private string twilioAccountSid = "ACf06e5a5474359856bc976fca41532da8";
-        private string twilioAuthToken = "1432733c3c69615927d39d2078530396";
-        private string twilioPhoneNumber = "+16464614988";
+        private string twilioAccountSid;
+        private string twilioAuthToken;
+        private string twilioPhoneNumber;
         private string usernameFor2FA;
         private string phoneNumberFor2FA;
         private string generated2FACode;
@@ -34,6 +35,12 @@ namespace VetMed
         public Form1()
         {
             InitializeComponent();
+
+            // Load .env variables
+            Env.Load();
+            twilioAccountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+            twilioAuthToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+            twilioPhoneNumber = Environment.GetEnvironmentVariable("TWILIO_PHONE_NUMBER");
         }
 
         private void Form1_Load(object sender, EventArgs e)
