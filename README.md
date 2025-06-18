@@ -23,5 +23,5 @@ Visual Studio 2022
 
 SQL Server LocalDB
 
-Twilio account (for SMS features)
+Twilio account
 (Twilio account credentials have been omitted for security reasons. The code includes placeholders to allow users to add their own account information as needed.)
